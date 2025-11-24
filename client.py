@@ -42,11 +42,7 @@ def main():
     args = parser.parse_args()
 
     context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH, cafile=args.cafile)
-    # For self-signed cert, require verification against cafile (the server cert)
-    # ALWAYS REQUIRE VERIFICATION FOR ACTUAL USE!!
-    # skip verification (for debugging only), uncomment:
-    # context.check_hostname = False
-    # context.verify_mode = ssl.CERT_NONE
+    # certificate for verification
 
     # create tcp socket
     raw_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -96,3 +92,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
